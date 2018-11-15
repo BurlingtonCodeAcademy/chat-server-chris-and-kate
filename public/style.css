@@ -1,0 +1,30 @@
+#house{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-areas: 
+    "a b"
+    "c c"
+}
+
+#main-room{
+  grid-area: a;
+  height: 500px;
+  border: 1px black solid;
+}
+
+#room-list{
+  grid-area: b;
+  height: 500px;
+  border: 1px black solid;
+}
+
+#user-input{
+  grid-area: c;
+  padding: 20px;
+  height: 50px;
+  border: 1px black solid;
+}
+
+.form{
+  width: 500px;
+}
