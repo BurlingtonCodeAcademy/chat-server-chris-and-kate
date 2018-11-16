@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/BurlingtonCodeAcademy/chat-server-chris-and-kate#readme",
   "dependencies": {
+    "cypress": "^3.1.1",
     "express": "^4.16.4"
-  }
+  },
+  "devDependencies": {}
 }
