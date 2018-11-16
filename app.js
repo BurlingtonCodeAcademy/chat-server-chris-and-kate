@@ -13,3 +13,11 @@ app.get('/', (request, response) => {
   response.sendFile($path.join(publicDir, 'main.html'))
 
 });
+
+//app.get('/main', (request, response) => {
+  //let htmlFile = $path.join(publicDir, "main.html");
+ /// response.sendFile(htmlFile);
+//})
+//app.post('/main', express.urlencoded({extended: false}
+  //createMessage(nextMessageId(), request.body, response)
+//})
