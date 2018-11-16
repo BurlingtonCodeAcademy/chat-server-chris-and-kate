@@ -16,11 +16,8 @@
       <ul></ul>
     </div>
     <div id="room-list">
-      <ul>
-        <li>Main Room</li>
-        <li>Dogs</li>
-      </ul>
-      <form method="POST" action="/rooms" class='form'>
+      <ul></ul>
+      <form method="POST" action="/chat/rooms" class='form'>
         <button type='submit'>New Room</button>
         <label>Topic:<input type="text" name="topic" maxlength="50"></label>
       </form>
@@ -39,21 +36,32 @@
 <script>
 fetch('chat.json')
   .then((response) => response.json())
-  .then(showMessages)
-  //.then(showRoomName)
+  .then(showAllMessages)
 
-function showMessages(messages) {
+fetch('chat/rooms.json')
+  .then((response) => response.json())
+  .then(showAllRooms)
+
+function showAllRooms(rooms) {
+  console.log(rooms)
+  let list = document.querySelector('#room-list > ul');
+  for (let room of rooms) {
+    console.log(room)
+    let item = document.createElement('li');
+    let roomDisplay = `<a href="./chat/rooms/${room.topic}">${room.topic}</a>`;
+    item.innerHTML = roomDisplay;
+    list.appendChild(item);
+  }  
+}
+function showAllMessages(messages){
+  console.log(messages)
   let list = document.querySelector('#main-room > ul');
   for (let message of messages) {
     let item = document.createElement('li');
     let chat = `[${message.time}]  <b>${message.user}</b> : ${message.message}`;
     item.innerHTML = chat;
     list.appendChild(item);
-  }  
-}
-function showRoomName(rooms){
-  //let name = room.topic
-}
+  }  }
 </script>
 
 </body>
