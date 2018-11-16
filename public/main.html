@@ -12,22 +12,44 @@
 
 <body>
   <div id="house">
-    <div id="main-room"></div>
-    <div id="room-list"></div>
+    <div id="main-room"><h1 id='room-name'></h1>
+      <ul></ul>
+    </div>
+    <div id="room-list">
+      <ul>
+        <li>Main Room</li>
+        <li>Dogs</li>
+      </ul>
+    </div>
     <div id="user-input">
-      <form method="post" action="/messages" class='form'>
+      <form method="POST" action="/rooms/mainroom/messages" class='form'>
         <label>User:<input type="text" name="user" maxlength="100"></label>
         <label>Message:<input type="text" name="message" maxlength="500"></label>
         <br>
         <button type='submit'>Submit</button>
-
-        <button id="refresh">Refresh</button>
+        <button type='submit'>Refresh</button>
       </form>
     </div>
 
   </div>
 <script>
+fetch('rooms/mainroom/messages.json')
+  .then((response) => response.json())
+  .then(showMessages)
+  .then(showRoomName)
 
+function showMessages(messages) {
+  let list = document.querySelector('#main-room > ul');
+  for (let message of messages) {
+    let item = document.createElement('li');
+    let chat = `[${message.time}]  <b>${message.user}</b> : ${message.message}`;
+    item.innerHTML = chat;
+    list.appendChild(item);
+  }  
+}
+function showRoomName(rooms){
+  let name = room.topic
+}
 </script>
 
 </body>
