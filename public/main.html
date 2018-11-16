@@ -20,9 +20,13 @@
         <li>Main Room</li>
         <li>Dogs</li>
       </ul>
+      <form method="POST" action="/rooms" class='form'>
+        <button type='submit'>New Room</button>
+        <label>Topic:<input type="text" name="topic" maxlength="50"></label>
+      </form>
     </div>
     <div id="user-input">
-      <form method="POST" action="/rooms/mainroom/messages" class='form'>
+      <form method="POST" action="/chat" class='form'>
         <label>User:<input type="text" name="user" maxlength="100"></label>
         <label>Message:<input type="text" name="message" maxlength="500"></label>
         <br>
@@ -33,10 +37,10 @@
 
   </div>
 <script>
-fetch('rooms/mainroom/messages.json')
+fetch('chat.json')
   .then((response) => response.json())
   .then(showMessages)
-  .then(showRoomName)
+  //.then(showRoomName)
 
 function showMessages(messages) {
   let list = document.querySelector('#main-room > ul');
@@ -48,7 +52,7 @@ function showMessages(messages) {
   }  
 }
 function showRoomName(rooms){
-  let name = room.topic
+  //let name = room.topic
 }
 </script>
 
